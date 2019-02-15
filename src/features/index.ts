@@ -4,9 +4,9 @@ import WebpackInstaller from './webpack'
 
 export const eslint = new EslintInstaller()
 export const prettier = new PrettierInstaller()
-export const webpack = new WebpackInstaller()
+// export const webpack = new WebpackInstaller()
 
 export interface IFeature{
   name: string;
-  install(): void;
+  install(options: object): void;
 }

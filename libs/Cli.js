@@ -10,10 +10,10 @@ var Cli = /** @class */ (function () {
             // .option('-C, --chdir <path>', 'change the working directory')
             // .option('-c, --config <path>', 'set config path. defaults to ./deploy.conf')
             // .option('-T, --no-tests', 'ignore test hook');
-            .command('install [feature]')
-            .alias('')
-            .description('install some feature for project')
-            .action(function (feature) { return new Installer_1.default(feature); });
+            .command('install')
+            .alias('i')
+            .description('install some features for project')
+            .action(function (feature) { return new Installer_1.default(); });
     }
     Cli.prototype.run = function (argv) {
         program.parse(argv);

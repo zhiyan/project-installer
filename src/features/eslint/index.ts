@@ -1,11 +1,16 @@
 import {IFeature} from '..'
+import Dep from '../../Dep'
+import Config from '../../Config'
+import * as conf from './config'
 
 export default class EslintInstaller implements IFeature{
   readonly name = 'eslint';
 
-  install(){
+  install(options: object){
     return new Promise(resolve => {
-      setTimeout(resolve, 2000)
+      new Dep(conf.deps, options).install()
+      new Config(conf.files, options).install()
+      resolve()
     })
   }
 }

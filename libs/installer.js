@@ -34,56 +34,69 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
+            t[p[i]] = s[p[i]];
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var inquirer = require("inquirer");
 var AvailableFeatures = require("./features");
 require("colors");
 var Installer = /** @class */ (function () {
-    function Installer(feature) {
-        this.feature = feature;
+    function Installer() {
+        this.options = {};
         this.dispatch();
     }
     Installer.prototype.dispatch = function () {
-        if (this.feature) {
-            this[this.feature]();
-        }
-        else {
-            this.featurePrompt();
-        }
+        this.featurePrompt();
     };
     Installer.prototype.featurePrompt = function () {
         var _this = this;
         inquirer
-            .prompt({
-            name: 'features',
-            message: 'Select the features you want to install',
-            type: 'checkbox',
-            choices: Object.keys(AvailableFeatures)
-        })
-            .then(function (_a) {
-            var _b = _a.features, features = _b === void 0 ? [] : _b;
-            return __awaiter(_this, void 0, void 0, function () {
-                var _i, features_1, feature;
-                return __generator(this, function (_c) {
-                    switch (_c.label) {
-                        case 0:
-                            _i = 0, features_1 = features;
-                            _c.label = 1;
-                        case 1:
-                            if (!(_i < features_1.length)) return [3 /*break*/, 4];
-                            feature = features_1[_i];
-                            return [4 /*yield*/, this.runInstall(feature)];
-                        case 2:
-                            _c.sent();
-                            _c.label = 3;
-                        case 3:
-                            _i++;
-                            return [3 /*break*/, 1];
-                        case 4: return [2 /*return*/];
-                    }
-                });
+            .prompt([
+            {
+                name: 'features',
+                message: 'Select the features you want to install',
+                type: 'checkbox',
+                choices: Object.keys(AvailableFeatures)
+            },
+            {
+                name: 'packageManager',
+                message: 'Which package manager do you use?',
+                type: 'list',
+                choices: ['npm', 'yarn']
+            }
+        ])
+            .then(function (_a) { return __awaiter(_this, void 0, void 0, function () {
+            var _i, features_1, feature;
+            var _b = _a.features, features = _b === void 0 ? [] : _b, options = __rest(_a, ["features"]);
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        this.options = options;
+                        _i = 0, features_1 = features;
+                        _c.label = 1;
+                    case 1:
+                        if (!(_i < features_1.length)) return [3 /*break*/, 4];
+                        feature = features_1[_i];
+                        return [4 /*yield*/, this.runInstall(feature)];
+                    case 2:
+                        _c.sent();
+                        _c.label = 3;
+                    case 3:
+                        _i++;
+                        return [3 /*break*/, 1];
+                    case 4:
+                        console.log("\u5168\u90E8\u5B89\u88C5\u5B8C\u6210!".blue);
+                        return [2 /*return*/];
+                }
             });
-        });
+        }); });
     };
     Installer.prototype.runInstall = function (feature) {
         var _this = this;
@@ -93,7 +106,7 @@ var Installer = /** @class */ (function () {
                     case 0:
                         console.log(("\u5F00\u59CB\u5B89\u88C5" + feature + "...").green);
                         // @ts-ignore
-                        return [4 /*yield*/, AvailableFeatures[feature].install()];
+                        return [4 /*yield*/, AvailableFeatures[feature].install(this.options)];
                     case 1:
                         // @ts-ignore
                         _a.sent();

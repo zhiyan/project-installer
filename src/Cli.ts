@@ -10,10 +10,10 @@ export default class Cli {
       // .option('-c, --config <path>', 'set config path. defaults to ./deploy.conf')
       // .option('-T, --no-tests', 'ignore test hook');
   
-      .command('install [feature]')
-      .alias('')
-      .description('install some feature for project')
-      .action((feature) => new Installer(feature));
+      .command('install')
+      .alias('i')
+      .description('install some features for project')
+      .action((feature) => new Installer());
   }
 
   run(argv: string[]){
