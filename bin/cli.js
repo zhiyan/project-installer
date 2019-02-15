@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require('../libs/installer')
+require('../libs/index')
