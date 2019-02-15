@@ -1,10 +1,10 @@
 import EslintInstaller from './eslint'
 import PrettierInstaller from './prettier'
-import WebpackInstaller from './webpack'
+import StylelintInstaller from './stylelint'
 
 export const eslint = new EslintInstaller()
 export const prettier = new PrettierInstaller()
-// export const webpack = new WebpackInstaller()
+export const stylelint = new StylelintInstaller()
 
 export interface IFeature{
   name: string;
