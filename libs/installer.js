@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var inquirer = require("inquirer");
 var AvailableFeatures = require("./features");
-var colors = require("colors");
+require("colors");
 var Installer = /** @class */ (function () {
     function Installer(feature) {
         this.feature = feature;
@@ -91,7 +91,7 @@ var Installer = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        console.log(colors.green("\u5F00\u59CB\u5B89\u88C5" + feature + "..."));
+                        console.log(("\u5F00\u59CB\u5B89\u88C5" + feature + "...").green);
                         // @ts-ignore
                         return [4 /*yield*/, AvailableFeatures[feature].install()];
                     case 1:

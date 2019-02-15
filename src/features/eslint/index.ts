@@ -1,6 +1,6 @@
-import {IInstaller} from '.'
+import {IFeature} from '..'
 
-export default class EslintInstaller implements IInstaller{
+export default class EslintInstaller implements IFeature{
   readonly name = 'eslint';
 
   install(){

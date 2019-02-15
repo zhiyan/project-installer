@@ -1,10 +1,12 @@
-import EslintInstaller from './Eslint'
-import PrettierInstaller from './Prettier'
+import EslintInstaller from './eslint'
+import PrettierInstaller from './prettier'
+import WebpackInstaller from './webpack'
 
 export const eslint = new EslintInstaller()
 export const prettier = new PrettierInstaller()
+export const webpack = new WebpackInstaller()
 
-export interface IInstaller{
+export interface IFeature{
   name: string;
   install(): void;
 }

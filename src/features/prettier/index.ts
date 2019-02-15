@@ -1,6 +1,6 @@
-import {IInstaller} from '.'
+import {IFeature} from '..'
 
-export default class PrettierInstaller implements IInstaller {
+export default class PrettierInstaller implements IFeature {
   readonly name = 'prettier';
 
   install(){

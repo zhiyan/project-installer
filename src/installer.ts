@@ -1,6 +1,6 @@
 import * as inquirer from 'inquirer'
 import * as AvailableFeatures from './features'
-import * as colors from 'colors'
+import 'colors'
 
 export interface IAnswersParams {
   features?: string[]
@@ -40,7 +40,7 @@ export default class Installer {
 
   runInstall(feature: string){
     return new Promise(async resolve => {
-      console.log(colors.green(`开始安装${feature}...`))
+      console.log(`开始安装${feature}...`.green)
 
       // @ts-ignore
       await AvailableFeatures[feature].install()
