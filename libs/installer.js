@@ -50,12 +50,9 @@ require("colors");
 var Installer = /** @class */ (function () {
     function Installer() {
         this.options = {};
-        this.dispatch();
+        this.showPrompt();
     }
-    Installer.prototype.dispatch = function () {
-        this.featurePrompt();
-    };
-    Installer.prototype.featurePrompt = function () {
+    Installer.prototype.showPrompt = function () {
         var _this = this;
         inquirer
             .prompt([
@@ -92,7 +89,7 @@ var Installer = /** @class */ (function () {
                         _i++;
                         return [3 /*break*/, 1];
                     case 4:
-                        console.log("\u5168\u90E8\u5B89\u88C5\u5B8C\u6210!".blue);
+                        console.log("Finished!".blue);
                         return [2 /*return*/];
                 }
             });
@@ -104,7 +101,7 @@ var Installer = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        console.log(("\u5F00\u59CB\u5B89\u88C5" + feature + "...").green);
+                        console.log(("Begin to install feature \"" + feature + "\"...").green);
                         // @ts-ignore
                         return [4 /*yield*/, AvailableFeatures[feature].install(this.options)];
                     case 1:

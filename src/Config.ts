@@ -3,31 +3,35 @@ import * as path from 'path'
 import * as fs from 'fs-extra'
 import {IOptions} from './Installer'
 
-interface IFiles {
-  [key: string]: any
+interface IFile {
+  name: string;
+  content?: string | object
 }
 
 export default class Config {
-  files: IFiles;
+  files: IFile[];
   options: IOptions;
   
-  constructor(files: object, options: IOptions){
+  constructor(files: IFile[], options: IOptions){
     this.files = files
     this.options = options
   }
 
   install(){
-    Object.keys(this.files).forEach(fileName => this.installFile(fileName))
-    console.log('写入配置文件成功'.green)
+    this.files.forEach(file => this.installFile(file))
   }
 
-  installFile(fileName: string){
-    console.log(`开始写入配置文件${fileName}...`.green)
-    console.log(path.resolve(process.cwd(), fileName))
-    if(/(rc|\.json)$/.test(fileName)){
-      fs.outputJsonSync(fileName, this.files[fileName], {spaces: 2})
+  installFile(file: IFile){
+    const {name: fileName, content} = file
+
+    console.log(`Begin to create config file "${fileName}"...`.green)
+
+    if(!content){
+      fs.copySync(path.resolve(__dirname, '../assets', fileName), path.resolve(process.cwd(), fileName))
+    }else if(typeof content === 'object'){
+      fs.outputJsonSync(fileName, file, {spaces: 2})
     }else{
-      fs.outputFileSync(fileName, this.files[fileName])
+      fs.outputFileSync(fileName, file.content)
     }
   }
 }

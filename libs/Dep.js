@@ -12,10 +12,9 @@ var Dep = /** @class */ (function () {
         this.deps.forEach(function (packageName) {
             _this.installPackage(packageName);
         });
-        console.log('依赖安装成功'.green);
     };
     Dep.prototype.installPackage = function (packageName) {
-        console.log(("\u6B63\u5728\u5B89\u88C5\u4F9D\u8D56" + packageName + "...").green);
+        console.log(("Begin to install dependence \"" + packageName + "\"...").green);
         if (this.options.packageManager === 'yarn') {
             sh.exec("yarn add -D " + packageName);
         }

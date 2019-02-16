@@ -45,6 +45,9 @@ exports.eslintrc = {
         'comma-dangle': ['error', 'always-multiline'],
     },
 };
-exports.files = {
-    '.eslintrc': exports.eslintrc
-};
+exports.files = [
+    {
+        name: '.eslintrc',
+        content: exports.eslintrc
+    }
+];

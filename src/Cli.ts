@@ -1,4 +1,4 @@
-import * as program from 'commander';
+import * as program from 'commander'
 import Installer from './Installer'
 const pkg = require('../package.json')
 
@@ -12,8 +12,8 @@ export default class Cli {
   
       .command('install')
       .alias('i')
-      .description('install some features for project')
-      .action((feature) => new Installer());
+      .description('install features for project')
+      .action(() => new Installer());
   }
 
   run(argv: string[]){

@@ -10,6 +10,9 @@ export const stylelintrc = {
 }
 
 
-export const files = {
-  '.stylelintrc': stylelintrc
-}
+export const files = [
+  {
+    name: '.stylelintrc',
+    content: stylelintrc
+  }
+]

@@ -15,11 +15,10 @@ export default class Dep {
     this.deps.forEach(packageName => {
       this.installPackage(packageName)
     })
-    console.log('依赖安装成功'.green)
   }
 
   installPackage(packageName: string){
-    console.log(`正在安装依赖${packageName}...`.green)
+    console.log(`Begin to install dependence "${packageName}"...`.green)
     if(this.options.packageManager === 'yarn'){
       sh.exec(`yarn add -D ${packageName}`);
     }else{

@@ -15,3 +15,5 @@ a easy way to add featrues(like eslint, prettier) to your npm project
 ### support features
 * eslint
 * prettier
+* stylelint
+* gitignore

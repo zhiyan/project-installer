@@ -12,8 +12,8 @@ var Cli = /** @class */ (function () {
             // .option('-T, --no-tests', 'ignore test hook');
             .command('install')
             .alias('i')
-            .description('install some features for project')
-            .action(function (feature) { return new Installer_1.default(); });
+            .description('install features for project')
+            .action(function () { return new Installer_1.default(); });
     }
     Cli.prototype.run = function (argv) {
         program.parse(argv);

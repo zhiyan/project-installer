@@ -8,6 +8,9 @@ exports.stylelintrc = {
     "extends": ["stylelint-config-recommended"],
     "rules": {}
 };
-exports.files = {
-    '.stylelintrc': exports.stylelintrc
-};
+exports.files = [
+    {
+        name: '.stylelintrc',
+        content: exports.stylelintrc
+    }
+];

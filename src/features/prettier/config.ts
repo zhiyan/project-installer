@@ -1,3 +1,5 @@
+import * as path from 'path'
+
 export const deps = [
   'prettier'
 ]
@@ -14,17 +16,12 @@ export const prettierrc = {
   ]
 }
 
-export const prettierignore = `
-**/*.md
-**/*.svg
-**/*.ejs
-**/*.html
-package.json
-.umi
-.umi-production
-`
-
-export const files = {
-  '.prettierrc': prettierrc,
-  '.prettierignore': prettierignore
-}
+export const files = [
+  {
+    name: '.prettierrc',
+    content: prettierrc
+  },
+  {
+    name: '.prettierignore'
+  }
+]

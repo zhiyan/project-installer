@@ -10,17 +10,19 @@ var Config = /** @class */ (function () {
     }
     Config.prototype.install = function () {
         var _this = this;
-        Object.keys(this.files).forEach(function (fileName) { return _this.installFile(fileName); });
-        console.log('写入配置文件成功'.green);
+        this.files.forEach(function (file) { return _this.installFile(file); });
     };
-    Config.prototype.installFile = function (fileName) {
-        console.log(("\u5F00\u59CB\u5199\u5165\u914D\u7F6E\u6587\u4EF6" + fileName + "...").green);
-        console.log(path.resolve(process.cwd(), fileName));
-        if (/(rc|\.json)$/.test(fileName)) {
-            fs.outputJsonSync(fileName, this.files[fileName], { spaces: 2 });
+    Config.prototype.installFile = function (file) {
+        var fileName = file.name, content = file.content;
+        console.log(("Begin to create config file \"" + fileName + "\"...").green);
+        if (!content) {
+            fs.copySync(path.resolve(__dirname, '../assets', fileName), path.resolve(process.cwd(), fileName));
+        }
+        else if (typeof content === 'object') {
+            fs.outputJsonSync(fileName, file, { spaces: 2 });
         }
         else {
-            fs.outputFileSync(fileName, this.files[fileName]);
+            fs.outputFileSync(fileName, file.content);
         }
     };
     return Config;

@@ -11,19 +11,14 @@ export interface IAnswersParams extends IOptions {
 }
 
 export default class Installer {
-  [key: string]: any,
-  options: object;
+  options: IOptions;
 
   constructor(){
     this.options = {}
-    this.dispatch()
+    this.showPrompt()
   }
 
-  dispatch(){
-    this.featurePrompt()
-  }
-
-  featurePrompt(){
+  showPrompt(){
     inquirer
       .prompt([
         {
@@ -44,13 +39,13 @@ export default class Installer {
         for(const feature of features){
           await this.runInstall(feature)
         }
-        console.log(`全部安装完成!`.blue)
+        console.log(`Finished!`.blue)
       });
   }
 
   runInstall(feature: string){
     return new Promise(async resolve => {
-      console.log(`开始安装${feature}...`.green)
+      console.log(`Begin to install feature "${feature}"...`.green)
       // @ts-ignore
       await AvailableFeatures[feature].install(this.options)
       resolve()

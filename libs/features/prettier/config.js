@@ -14,8 +14,12 @@ exports.prettierrc = {
         }
     ]
 };
-exports.prettierignore = "\n**/*.md\n**/*.svg\n**/*.ejs\n**/*.html\npackage.json\n.umi\n.umi-production\n";
-exports.files = {
-    '.prettierrc': exports.prettierrc,
-    '.prettierignore': exports.prettierignore
-};
+exports.files = [
+    {
+        name: '.prettierrc',
+        content: exports.prettierrc
+    },
+    {
+        name: '.prettierignore'
+    }
+];

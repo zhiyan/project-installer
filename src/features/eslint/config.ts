@@ -47,6 +47,9 @@ export const eslintrc = {
 }
 
 
-export const files = {
-  '.eslintrc': eslintrc
-}
+export const files = [
+  {
+    name: '.eslintrc',
+    content: eslintrc
+  }
+]
