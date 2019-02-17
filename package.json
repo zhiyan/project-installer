@@ -13,6 +13,19 @@
   },
   "author": "zhiyan",
   "license": "MIT",
+  "keywords": [
+    "eslint",
+    "prettier",
+    "stylelint",
+    "gitignore"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhiyan/project-installer"
+  },
+  "bugs": {
+    "url": "https://github.com/zhiyan/project-installer/issues"
+  },
   "devDependencies": {
     "@types/fs-extra": "^5.0.5",
     "@types/inquirer": "^0.0.43",
