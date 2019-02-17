@@ -1,6 +1,6 @@
 # Project installer
 
-a easy way to add featrues(like eslint, prettier) to your npm project
+a easy way to add features(like eslint, prettier) to your npm project
 
 ### install
 ```bash
