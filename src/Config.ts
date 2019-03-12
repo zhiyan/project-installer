@@ -29,9 +29,9 @@ export default class Config {
     if(!content){
       fs.copySync(path.resolve(__dirname, '../assets', fileName), path.resolve(process.cwd(), fileName))
     }else if(typeof content === 'object'){
-      fs.outputJsonSync(fileName, file, {spaces: 2})
+      fs.outputJsonSync(fileName, file.content, {spaces: 2})
     }else{
-      fs.outputFileSync(fileName, file.content)
+      fs.outputFileSync(fileName, file)
     }
   }
 }
